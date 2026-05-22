@@ -1,9 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { productsData } from '../../data/products';
 
 const initialState = {
-  allProducts: productsData,
-  filteredProducts: productsData,
   activeCategory: 'all',
   activeType: 'all',
   selectedProduct: null,
@@ -16,11 +13,10 @@ const productSlice = createSlice({
   reducers: {
     setCategory: (state, action) => {
       state.activeCategory = action.payload;
-      state.filteredProducts = filterProducts(state.allProducts, action.payload, state.activeType);
+      state.activeType = 'all';
     },
     setType: (state, action) => {
       state.activeType = action.payload;
-      state.filteredProducts = filterProducts(state.allProducts, state.activeCategory, action.payload);
     },
     openProductModal: (state, action) => {
       state.selectedProduct = action.payload;
@@ -32,14 +28,6 @@ const productSlice = createSlice({
     },
   },
 });
-
-function filterProducts(products, category, type) {
-  return products.filter((product) => {
-    const categoryMatch = category === 'all' || product.category === category;
-    const typeMatch = type === 'all' || product.type === type;
-    return categoryMatch && typeMatch;
-  });
-}
 
 export const { setCategory, setType, openProductModal, closeProductModal } = productSlice.actions;
 export default productSlice.reducer;

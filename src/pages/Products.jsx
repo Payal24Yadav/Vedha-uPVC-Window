@@ -1,14 +1,38 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useMemo } from 'react';
+import { motion } from 'framer-motion';
 import { SlidersHorizontal } from 'lucide-react';
 import { setCategory, setType } from '../features/products/productSlice';
-import { productCategories, productTypes } from '../data/products';
+import { productCategories, productTypes, productsData } from '../data/products';
 import ProductCard from '../components/ProductCard';
-import SectionHeading from '../components/SectionHeading';
 
 const Products = () => {
   const dispatch = useDispatch();
-  const { filteredProducts, activeCategory, activeType } = useSelector((state) => state.products);
+  const { activeCategory, activeType } = useSelector((state) => state.products);
+
+  const categoryProducts = useMemo(() => {
+    return productsData.filter((product) => {
+      return activeCategory === 'all' || product.category === activeCategory;
+    });
+  }, [activeCategory]);
+
+  const availableTypes = useMemo(() => {
+    const typeIds = new Set(categoryProducts.map((product) => product.type));
+    return productTypes.filter((type) => type.id === 'all' || typeIds.has(type.id));
+  }, [categoryProducts]);
+
+  const selectedType = availableTypes.some((type) => type.id === activeType)
+    ? activeType
+    : 'all';
+
+  const displayedProducts = useMemo(() => {
+    if (selectedType === 'all') {
+      return categoryProducts;
+    }
+
+    const typedProducts = categoryProducts.filter((product) => product.type === selectedType);
+    return typedProducts.length > 0 ? typedProducts : categoryProducts;
+  }, [categoryProducts, selectedType]);
 
   return (
     <motion.div
@@ -74,11 +98,11 @@ const Products = () => {
                 <SlidersHorizontal size={18} className="text-gray-400 flex-shrink-0" />
                 <label className="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Type:</label>
                 <select
-                  value={activeType}
+                  value={selectedType}
                   onChange={(e) => dispatch(setType(e.target.value))}
                   className="px-4 py-2.5 rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-950 text-gray-700 dark:text-gray-300 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#4a7c59]/20 focus:border-[#4a7c59] dark:focus:border-[#4a7c59]"
                 >
-                  {productTypes.map((type) => (
+                  {availableTypes.map((type) => (
                     <option key={type.id} value={type.id}>
                       {type.label}
                     </option>
@@ -90,13 +114,12 @@ const Products = () => {
           </div>
 
           {/* Grid display */}
-          <AnimatePresence mode="popLayout">
-            {filteredProducts.length > 0 ? (
+            {displayedProducts.length > 0 ? (
               <motion.div 
                 layout 
                 className="balanced-card-grid"
               >
-                {filteredProducts.map((product, idx) => (
+                {displayedProducts.map((product, idx) => (
                   <motion.div
                     key={product.id}
                     layout
@@ -131,7 +154,6 @@ const Products = () => {
                 </button>
               </motion.div>
             )}
-          </AnimatePresence>
         </div>
       </section>
     </motion.div>

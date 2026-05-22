@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Phone, ChevronRight, Leaf } from 'lucide-react';
+import { Menu, X, Phone, ChevronRight } from 'lucide-react';
 import { toggleMobileMenu, closeMobileMenu } from '../features/ui/uiSlice';
 import { companyData } from '../data/company';
 import { mobileMenuAnimation, overlayAnimation } from '../animations/variants';
@@ -48,19 +48,28 @@ const Navbar = () => {
         }`}
       >
         <div className="nav-container">
-          <div className={`nav-pill flex items-center justify-between rounded-full px-4 sm:px-5 md:px-8 py-3 transition-all duration-700 ${
+          <div className={`nav-pill flex items-center justify-between rounded-full px-3 sm:px-5 md:px-8 py-1.5 md:py-2 transition-all duration-700 ${
             scrolled
-              ? 'bg-white/85 dark:bg-[#0f1a14]/90 backdrop-blur-2xl shadow-[0_8px_40px_rgba(0,0,0,0.08)] border border-gray-200/40 dark:border-white/5'
-              : 'bg-white/50 dark:bg-[#0f1a14]/50 backdrop-blur-xl border border-white/30 dark:border-white/10'
+              ? 'bg-white/95 dark:bg-[#0f1a14]/95 backdrop-blur-md shadow-lg shadow-black/5 border border-white/80 dark:border-white/10'
+              : 'bg-white/95 dark:bg-[#0f1a14]/90 backdrop-blur-md shadow-lg shadow-black/5 border border-white/70 dark:border-white/10'
           }`}>
-            {/* Logo */}
-            <Link to="/" className="flex items-center gap-3 group" id="nav-logo">
-              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#1a3c34] to-[#4a7c59] flex items-center justify-center shadow-lg shadow-[#4a7c59]/20 group-hover:shadow-[#4a7c59]/40 transition-shadow duration-500">
-                <Leaf size={18} className="text-white" />
+            
+            {/* Logo Section with your customized Image */}
+            <Link to="/" className="flex flex-shrink-0 items-center gap-2.5 sm:gap-3 group" id="nav-logo">
+              <div className="nav-logo-frame h-12 w-12 sm:h-14 sm:w-14 md:h-16 md:w-16 flex-shrink-0 bg-transparent flex items-center justify-center transition-transform duration-300 group-hover:scale-[1.04]">
+                <img 
+                  src="/vedha-symbol.png" 
+                  alt="Vedha shield window symbol" 
+                  className="nav-logo-image h-full w-full object-contain flex-shrink-0"
+                />
               </div>
-              <div className="block min-w-0">
-                <h1 className="text-base sm:text-lg font-bold text-[#1a3c34] dark:text-white leading-none tracking-tight font-[family-name:var(--font-family-heading)]">Vedha</h1>
-                <p className="text-[8px] sm:text-[9px] text-[#4a7c59] dark:text-[#6b9e7a] font-semibold tracking-[0.14em] sm:tracking-[0.2em] uppercase whitespace-nowrap">uPVC Windows</p>
+              <div className="flex min-w-0 flex-col justify-center">
+                <span className="text-[1.35rem] sm:text-2xl md:text-[1.7rem] font-black text-[#1a3c34] dark:text-white leading-none tracking-tight font-[family-name:var(--font-family-heading)]">
+                  VEDHA
+                </span>
+                <span className="mt-1 text-[8px] sm:text-[9px] md:text-[10px] font-bold uppercase tracking-[0.18em] sm:tracking-[0.22em] text-[#4a7c59] dark:text-[#b5d4be] whitespace-nowrap">
+                  uPVC Windows
+                </span>
               </div>
             </Link>
 
@@ -73,8 +82,8 @@ const Navbar = () => {
                   className={({ isActive }) =>
                     `relative px-4 py-2 text-sm font-medium rounded-full transition-all duration-400 ${
                       isActive
-                        ? 'text-[#1a3c34] dark:text-[#6b9e7a] bg-[#4a7c59]/10 dark:bg-[#4a7c59]/20'
-                        : 'text-[#2c2c2c]/70 dark:text-gray-300 hover:text-[#1a3c34] dark:hover:text-[#6b9e7a] hover:bg-[#4a7c59]/5 dark:hover:bg-[#4a7c59]/10'
+                        ? 'text-[#1a3c34] dark:text-[#b5d4be] bg-[#4a7c59]/10 dark:bg-[#4a7c59]/20'
+                        : 'text-[#1f2933]/80 dark:text-gray-200 hover:text-[#1a3c34] dark:hover:text-[#b5d4be] hover:bg-[#4a7c59]/6 dark:hover:bg-[#4a7c59]/10'
                     }`
                   }
                 >
@@ -133,12 +142,16 @@ const Navbar = () => {
               <div className="p-6">
                 <div className="flex items-center justify-between mb-10">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#1a3c34] to-[#4a7c59] flex items-center justify-center">
-                      <Leaf size={18} className="text-white" />
+                    <div className="nav-logo-frame h-14 w-14 flex-shrink-0 bg-transparent flex items-center justify-center">
+                      <img 
+                        src="/vedha-symbol.png" 
+                        alt="Vedha shield window symbol" 
+                        className="nav-logo-image h-full w-full object-contain flex-shrink-0"
+                      />
                     </div>
                     <div>
-                      <h2 className="text-lg font-bold text-[#1a3c34] dark:text-white font-[family-name:var(--font-family-heading)]">Vedha</h2>
-                      <p className="text-xs text-[#4a7c59] dark:text-[#6b9e7a]">uPVC Windows & Doors</p>
+                      <h2 className="text-2xl font-black text-[#1a3c34] dark:text-white leading-none font-[family-name:var(--font-family-heading)]">VEDHA</h2>
+                      <p className="text-[9.5px] font-bold text-[#4a7c59] dark:text-[#b5d4be] tracking-widest uppercase mt-1">uPVC Windows & Doors</p>
                     </div>
                   </div>
                   <button
@@ -157,7 +170,7 @@ const Navbar = () => {
                       className={({ isActive }) =>
                         `flex items-center justify-between px-5 py-4 rounded-2xl text-base font-medium transition-all duration-300 ${
                           isActive
-                            ? 'text-[#1a3c34] bg-[#4a7c59]/10 dark:bg-[#4a7c59]/20 dark:text-[#6b9e7a]'
+                            ? 'text-[#1a3c34] bg-[#4a7c59]/10 dark:bg-[#4a7c59]/20 dark:text-[#b5d4be]'
                             : 'text-[#2c2c2c]/70 dark:text-gray-300 hover:bg-[#4a7c59]/5 dark:hover:bg-[#4a7c59]/10'
                         }`
                       }

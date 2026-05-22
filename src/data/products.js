@@ -10,10 +10,10 @@ export const productsData = [
     features: ["Multi-point locking", "Double weather seal", "Noise reduction up to 40dB", "UV resistant glazing", "Easy maintenance", "10-year warranty"],
     specs: { material: "uPVC Profile", glass: "5mm toughened", frame: "60mm multi-chamber", color: "White / Charcoal" },
     price: "Starting ₹450/sq.ft",
-    image: "https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=600&h=400&fit=crop",
+    image: "https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=600&h=400&fit=crop&auto=format&q=80",
     gallery: [
-      "https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=800&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=600&fit=crop"
+      "https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=800&h=600&fit=crop&auto=format&q=80",
+      "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=600&fit=crop&auto=format&q=80"
     ],
     badge: "Best Seller",
     rating: 4.8
@@ -29,9 +29,9 @@ export const productsData = [
     features: ["Outward opening", "Friction stay hinges", "Multi-point lock", "Fly mesh compatible", "Thermal insulation", "15-year warranty"],
     specs: { material: "uPVC Profile", glass: "5mm toughened", frame: "60mm 3-chamber", color: "White / Wood grain" },
     price: "Starting ₹520/sq.ft",
-    image: "https://images.unsplash.com/photo-1509644851169-2acc08aa25b5?w=600&h=400&fit=crop",
+    image: "https://images.unsplash.com/photo-1509644851169-2acc08aa25b5?w=600&h=400&fit=crop&auto=format&q=80",
     gallery: [
-      "https://images.unsplash.com/photo-1509644851169-2acc08aa25b5?w=800&h=600&fit=crop"
+      "https://images.unsplash.com/photo-1509644851169-2acc08aa25b5?w=800&h=600&fit=crop&auto=format&q=80"
     ],
     badge: "Popular",
     rating: 4.7
@@ -47,9 +47,9 @@ export const productsData = [
     features: ["Maximum natural light", "Superior sound insulation", "Clean minimal design", "Large panel sizes", "Energy efficient", "Custom shapes available"],
     specs: { material: "uPVC Profile", glass: "6mm toughened", frame: "60mm multi-chamber", color: "White / Grey / Custom" },
     price: "Starting ₹380/sq.ft",
-    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&h=400&fit=crop",
+    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&h=400&fit=crop&auto=format&q=80",
     gallery: [
-      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&h=600&fit=crop"
+      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&h=600&fit=crop&auto=format&q=80"
     ],
     badge: null,
     rating: 4.6
@@ -65,9 +65,9 @@ export const productsData = [
     features: ["Dual opening modes", "German hardware", "Easy interior cleaning", "Child safety mode", "Excellent air-tightness", "12-year warranty"],
     specs: { material: "uPVC Profile", glass: "Double glazed", frame: "70mm 5-chamber", color: "White / Anthracite" },
     price: "Starting ₹650/sq.ft",
-    image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&h=400&fit=crop",
+    image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&h=400&fit=crop&auto=format&q=80",
     gallery: [
-      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&h=600&fit=crop"
+      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&h=600&fit=crop&auto=format&q=80"
     ],
     badge: "Premium",
     rating: 4.9
@@ -83,9 +83,9 @@ export const productsData = [
     features: ["Floor to ceiling design", "Heavy-duty rollers", "Multi-track options", "Mosquito mesh track", "Thermal break technology", "15-year warranty"],
     specs: { material: "uPVC Profile", glass: "6mm toughened", frame: "80mm multi-chamber", color: "White / Dark Oak" },
     price: "Starting ₹580/sq.ft",
-    image: "https://images.unsplash.com/photo-1600566753086-00f18f6b4551?w=600&h=400&fit=crop",
+    image: "https://images.unsplash.com/photo-1600566753086-00f18f6b4551?w=600&h=400&fit=crop&auto=format&q=80",
     gallery: [
-      "https://images.unsplash.com/photo-1600566753086-00f18f6b4551?w=800&h=600&fit=crop"
+      "https://images.unsplash.com/photo-1600566753086-00f18f6b4551?w=800&h=600&fit=crop&auto=format&q=80"
     ],
     badge: "Trending",
     rating: 4.8
@@ -101,9 +101,9 @@ export const productsData = [
     features: ["Double panel design", "Multi-point locking", "Decorative glass options", "Premium handles", "Draft-proof sealing", "15-year warranty"],
     specs: { material: "uPVC Profile", glass: "5mm toughened / decorative", frame: "70mm multi-chamber", color: "White / Mahogany" },
     price: "Starting ₹620/sq.ft",
-    image: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=600&h=400&fit=crop",
+    image: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=600&h=400&fit=crop&auto=format&q=80",
     gallery: [
-      "https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=800&h=600&fit=crop"
+      "https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=800&h=600&fit=crop&auto=format&q=80"
     ],
     badge: "Luxury",
     rating: 4.9

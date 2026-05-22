@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { useDispatch } from 'react-redux';
 import { Eye, MessageSquare, Check, Star } from 'lucide-react';
@@ -7,15 +7,22 @@ import { openProductModal } from '../features/products/productSlice';
 import { openInquiryModal } from '../features/ui/uiSlice';
 
 const fallbackImages = [
-  'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900&h=650&fit=crop&auto=format',
-  'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=900&h=650&fit=crop&auto=format',
-  'https://images.unsplash.com/photo-1497366216548-37526070297c?w=900&h=650&fit=crop&auto=format',
+  'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900&h=650&fit=crop&auto=format&q=80',
+  'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=900&h=650&fit=crop&auto=format&q=80',
+  'https://images.unsplash.com/photo-1497366216548-37526070297c?w=900&h=650&fit=crop&auto=format&q=80',
 ];
 
 const ProductCard = ({ product }) => {
   const dispatch = useDispatch();
   const [imgLoaded, setImgLoaded] = useState(false);
   const [imageSrc, setImageSrc] = useState(product.image);
+  const [imageFailed, setImageFailed] = useState(false);
+
+  useEffect(() => {
+    setImageSrc(product.image);
+    setImgLoaded(false);
+    setImageFailed(false);
+  }, [product.image]);
 
   const handleImageError = () => {
     const fallback = fallbackImages[(product.id - 1) % fallbackImages.length];
@@ -23,6 +30,7 @@ const ProductCard = ({ product }) => {
       setImageSrc(fallback);
       setImgLoaded(false);
     } else {
+      setImageFailed(true);
       setImgLoaded(true);
     }
   };
@@ -34,18 +42,28 @@ const ProductCard = ({ product }) => {
     >
       {/* Image */}
       <div className="media-frame product-image-frame bg-[#f5f0eb] dark:bg-[#1a3c34]/20">
-        {!imgLoaded && (
+        <div className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-[#e7efe8] via-[#f8faf7] to-[#d9e7dd] px-6 text-center">
+          <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#4a7c59]">
+            {product.category}
+          </p>
+          <p className="mt-2 font-[family-name:var(--font-family-heading)] text-xl font-bold text-[#1a3c34]">
+            {product.name}
+          </p>
+        </div>
+        {!imgLoaded && !imageFailed && (
           <div className="absolute inset-0 skeleton" />
         )}
-        <motion.img
-          src={imageSrc}
-          alt={product.name}
-          className={`w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 ${imgLoaded ? 'opacity-100' : 'opacity-0'}`}
-          onLoad={() => setImgLoaded(true)}
-          onError={handleImageError}
-          loading="lazy"
-          referrerPolicy="no-referrer"
-        />
+        {!imageFailed && (
+          <motion.img
+            src={imageSrc}
+            alt={product.name}
+            className={`relative z-10 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 ${imgLoaded ? 'opacity-100' : 'opacity-0'}`}
+            onLoad={() => setImgLoaded(true)}
+            onError={handleImageError}
+            loading="lazy"
+            referrerPolicy="no-referrer"
+          />
+        )}
         {/* Overlay badges */}
         <div className="absolute top-4 left-4 flex gap-2">
           {product.isNew && (

@@ -187,7 +187,11 @@ body {
 }
 
 .nav-pill {
-  min-height: 72px;
+  min-height: 84px;
+}
+
+.nav-logo-image {
+  display: block;
 }
 
 .balanced-card-grid {
